@@ -35,6 +35,8 @@ $sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
 Install Kubeadmin with specific K8s version or by default, it will install the latest version
 Let us install K8s V1.18
 $sudo apt install kubeadm=1.18.0-00 kubelet=1.18.0-00 kubectl=1.18.0-00 -y
+In case you do not want unwanted updates happening
+$sudo apt-mark hold docker kubelet kubeadm kubectl
 
 ```
   
