@@ -12,36 +12,36 @@ TCP	Inbound	10252	kube-controller-manager	Self<br />
 
 ### Ports to be opened on Worker Nodes (Control Plane)
 
-TCP	Inbound	10250	Kubelet API	Self, Control plane
-TCP	Inbound	30000-32767	NodePort Services†	All
+TCP	Inbound	10250	Kubelet API	Self, Control plane<br />
+TCP	Inbound	30000-32767	NodePort Services†	All<br />
 
 ### Installation Steps on both Master & Worker Nodes
 
-  Turn off swap
-  >sudo swapoff -a
-  Verify swap
-  >free -m
-  Upgrade all libraries
-  >sudo apt-get update 
-  Install & Enable Docker
-  >sudo apt install docker.io -y
-  >sudo systemctl enable docker
+  Turn off swap<br />
+  >sudo swapoff -a<br />
+  Verify swap<br />
+  >free -m<br />
+  Upgrade all libraries<br />
+  >sudo apt-get update <br />
+  Install & Enable Docker<br />
+  >sudo apt install docker.io -y<br />
+  >sudo systemctl enable docker<br />
   
   Get the gpg keys for Kubeadm
-  >curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
-  >sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
+  >curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add<br />
+  >sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"<br />
   
-  Install Kubeadmin with specific K8s version or by default, it will install the latest version
-  Let us install K8s V1.18
-  >sudo apt install kubeadm=1.18 -y
+  Install Kubeadmin with specific K8s version or by default, it will install the latest version<br />
+  Let us install K8s V1.18<br />
+  >sudo apt install kubeadm=1.18 -y<br />
   
 
-### Let us now install the Control Plane on the MASTER NODE
+### Let us now install the Control Plane on the MASTER NODE<br />
 
-  Run only on Master node
-  >sudo kubeadm init
-  Once the Control Plane comes up without any errors, let us copy config files
-  >mkdir $HOME/.kube
-  >sudo cp /etc/kubernetes/admin.conf $HOME/.kube/config
-  >sudo chown $(id -u):$(id -g) $HOME/.kube/config
+  Run only on Master node<br />
+  >sudo kubeadm init<br />
+  Once the Control Plane comes up without any errors, let us copy config files<br />
+  >mkdir $HOME/.kube<br />
+  >sudo cp /etc/kubernetes/admin.conf $HOME/.kube/config<br />
+  >sudo chown $(id -u):$(id -g) $HOME/.kube/config<br />
   
