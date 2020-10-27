@@ -4,11 +4,11 @@ Document to set up vanilla Kubernetes set-up on Linux Servers running Ubuntu 18.
 
 ### Ports to be opened on Kubernetes Master (Control Plane)
 
-TCP	Inbound	6443	Kubernetes API server	All
-TCP	Inbound	2379-2380	etcd server client API	kube-apiserver, etcd
-TCP	Inbound	10250	Kubelet API	Self, Control plane
-TCP	Inbound	10251	kube-scheduler	Self
-TCP	Inbound	10252	kube-controller-manager	Self
+TCP	Inbound	6443	Kubernetes API server	All<br />
+TCP	Inbound	2379-2380	etcd server client API	kube-apiserver, etcd<br />
+TCP	Inbound	10250	Kubelet API	Self, Control plane<br />
+TCP	Inbound	10251	kube-scheduler	Self<br />
+TCP	Inbound	10252	kube-controller-manager	Self<br />
 
 ### Ports to be opened on Worker Nodes (Control Plane)
 
