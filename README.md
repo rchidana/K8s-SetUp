@@ -20,7 +20,7 @@ TCP	Inbound	30000-32767	NodePort Services†	All<br />
 ```
 Turn off swap
 $sudo swapoff -a
-Verify swap<br />
+Verify swap
 $free -m
 Upgrade all libraries
 $sudo apt-get update 
