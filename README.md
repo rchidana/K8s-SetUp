@@ -24,10 +24,15 @@ Verify swap
 $free -m
 Upgrade all libraries
 $sudo apt-get update 
+
 Install & Enable Docker
 $sudo apt install docker.io -y
 $sudo systemctl enable docker
-  
+
+Start Docker in case its not already started
+$sudo systemctl start docker
+$sudo systemctl status docker
+
 Get the gpg keys for Kubeadm
 $curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
 $sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
@@ -37,6 +42,11 @@ Let us install K8s V1.18
 $sudo apt install kubeadm=1.18.0-00 kubelet=1.18.0-00 kubectl=1.18.0-00 -y
 In case you do not want unwanted updates happening
 $sudo apt-mark hold docker kubelet kubeadm kubectl
+Verify kubeadm version
+$kubeadm version
+
+In order to set a unique name for the master node
+$sudo hostnamectl set-hostname master-node
 
 ```
   
@@ -45,7 +55,9 @@ $sudo apt-mark hold docker kubelet kubeadm kubectl
 
 ```
 Run only on Master node
-$sudo kubeadm init --apiserver-advertise-address IP_ADDRESS_OF_VM --pod-network-cidr CIDR_ADDRESS_RANGE
+kubeadm important flags --apiserver-advertise-address IP_ADDRESS_OF_VM --pod-network-cidr CIDR_ADDRESS_RANGE
+$sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+
 Once the Control Plane comes up without any errors, let us copy config files
 $mkdir $HOME/.kube
 $sudo cp /etc/kubernetes/admin.conf $HOME/.kube/config
@@ -61,6 +73,11 @@ $kubectl get nodes
 Let us install Flannel Network provider
 
 $sudo kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+
+Check the status of all Pods and wait till all required Pods get to RUNNING STATE
+
+$kubectl get pods --all-namespaces
+
 $kubectl get nodes
 
 ```
