@@ -45,10 +45,23 @@ $sudo apt-mark hold docker kubelet kubeadm kubectl
 
 ```
 Run only on Master node
-$sudo kubeadm init
+$sudo kubeadm init --apiserver-advertise-address IP_ADDRESS_OF_VM --pod-network-cidr CIDR_ADDRESS_RANGE
 Once the Control Plane comes up without any errors, let us copy config files
 $mkdir $HOME/.kube
 $sudo cp /etc/kubernetes/admin.conf $HOME/.kube/config
 $sudo chown $(id -u):$(id -g) $HOME/.kube/config
   
 ```
+
+### By default, K8s does not install any network interfaces and we need to install at least one CNI plugin in order to enable communication within the cluster
+
+```
+$kubectl get nodes
+
+Let us install Flannel Network provider
+
+$sudo kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+$kubectl get nodes
+
+```
+
