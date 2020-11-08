@@ -21,8 +21,8 @@ grafana                 https://grafana.github.io/helm-charts
 	
 >kubectl expose service prometheus-server --type=NodePort --target-port=9090 --name=prometheus-server-svc
 
->helm repo add grafana https://grafana.github.io/helm-charts
->helm install grafana grafana/grafana
+>helm repo add grafana https://grafana.github.io/helm-charts <br>
+>helm install grafana grafana/grafana <br>
 
 Copy the command that is required to decode the 'admin' password
 
