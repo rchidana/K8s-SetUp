@@ -72,7 +72,7 @@ $kubectl get nodes
 
 Let us install Flannel Network provider
 
-$sudo kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+$kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 
 Check the status of all Pods and wait till all required Pods get to RUNNING STATE
 
